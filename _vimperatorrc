@@ -1,0 +1,343 @@
+" _vimperatorrc
+" for vimperator 3.0
+
+echo "loading..."
+
+"+-----------------------------------------------------------------------------+
+" pref
+"+-----------------------------------------------------------------------------+
+" ブラウザタイトル変更
+"set titlestring=Firefox
+" guioptions
+set gui=nobookmarks,nomenu,nonavigation,noaddons
+
+"don't show closebutton on addonbar
+js document.getElementById('addonbar-closebutton').collapsed=true
+
+" undo保持数
+set! browser.sessionstore.max_tabs_undo=100
+
+" default search/suggest engine: google
+set defsearch=google 
+
+" :[tab]open での補完順位をブックマーク・検索エンジンの suggest ・ awesome bar の順にする 
+set suggestengines=google
+
+" 補完
+set autocomplete=true
+set complete=sl
+
+
+" タブの閉じるボタン
+set! browser.tabs.closeButtons=1
+
+" ページのアクセスキーを無効化
+set! ui.key.generalAccessKey=0
+
+" ページの移動時にフォームなどにフォーカスされないようにする 
+set focuscontent
+
+" hint migemo
+set hintmatching=custom
+
+" visualbell
+set visualbell
+hi Bell opacity: .5;
+
+" [tab]open等で長いタイトルがURIに被るらないように
+"hi CompResult widht: 45% !important; overflow: hidden !important; max-width; 60% !important;
+
+" don't animate tab-bar when fullscreen 
+set! browser.fullscreen.animateUp=0
+
+" リンクのURIをコマンドラインに表示
+set showstatuslinks=2
+
+" Open in New Tab
+set newtab=help
+
+set history=1000
+
+
+"+-----------------------------------------------------------------------------+
+" keymap
+"+-----------------------------------------------------------------------------+
+" map する前に設定しておかないとデフォルトが使われてしまう
+let mapleader=',' 
+
+" C-j/C-k
+"noremap <C-j> <C-e>
+"noremap <C-k> <C-y>
+
+" j/k 移動5倍
+noremap j 5<C-e>
+noremap k 5<C-y>
+
+" J/Kに半ページスクロールを割り当て
+noremap J <C-d>
+noremap K <C-u>
+
+" h/lでタブ移動
+noremap h gT
+noremap l gt
+
+" C-u/C-U でディレクトリ移動
+" noremap <C-u> gu
+" noremap <C-U> gU
+
+
+" Windows のキーバインド 
+noremap <C-a> <C-v><C-a>
+noremap <C-c> <C-v><C-c>
+
+inoremap <C-a> <C-v><C-a>
+inoremap <C-c> <C-v><C-c>
+inoremap <C-x> <C-v><C-x>
+inoremap <C-v> <C-v><C-v>
+inoremap <C-z> <C-v><C-z>
+
+cnoremap <C-a> <C-v><C-a>
+cnoremap <C-c> <C-v><C-c>
+cnoremap <C-x> <C-v><C-x>
+cnoremap <C-v> <C-v><C-v>
+inoremap <C-z> <C-v><C-z>
+
+
+" インサートモードでのカーソル移動
+" 出来るだけ他のマップと当たらないようにしたい
+inoremap <C-k> <Up>
+inoremap <C-p> <Up>
+inoremap <C-j> <Down>
+inoremap <C-n> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+" i love echo 
+map e :echo<Space>
+
+" undo一覧から開く
+map U :undo<Space>
+
+" wでタブ削除
+" noremap w d
+
+" C-h/l, S-Left/Right でタブ位置変更
+" map <C-,> :tabmove! -1<CR>
+" map <C-.> :tabmove! +1<CR>
+" map <S-Left> :tabmove! -1<CR>
+" map <S-Right> :tabmove! +1<CR>
+
+" Alt+rで再起動 
+" map <A-r> :restart<CR>
+
+" ↑ ↓ C-n C-p で補完
+cnoremap <Up> <S-Tab>
+cnoremap <Down> <Tab>
+cnoremap <C-n> <Tab>
+cnoremap <C-d> <Tab>
+cnoremap <C-p> <S-Tab>
+
+
+" Ctrl+V で貼り付け 
+"inoremap <C-v> <S-Insert>
+
+" 各種バー表示をトグル
+" noremap <C-1> :set go=r<cr>
+" noremap <C-2> :set go=rT<cr>
+" noremap <C-3> :set go=rmTb<cr>
+
+" Ctrl+Space で Esc
+inoremap <C-Space> <esc>
+
+" コマンドヒストリって頻繁に使うのでShift+上矢印キーに割り当てる
+noremap <S-Up> :<Up>
+
+
+" NOP(無効)
+" ZZ⇒終了
+noremap ZZ <NOP>
+map p <Nop>
+map .. <Nop>
+map i <Nop>
+map A <Nop>
+map d <Nop>
+map D <Nop>
+
+
+"Escの2回押しでハイライト消去 
+"nmap <ESC><ESC> :nohlsearch<CR><ESC>
+
+
+" いつでもtemp.jsをいじれるように
+nnoremap <A-t> :<C-u>aso ~/vimperator/plugin/temp.js<CR>
+
+
+
+
+
+"+-----------------------------------------------------------------------------+
+" Cabbrev
+"+-----------------------------------------------------------------------------+
+cabbrev -javascript URL buffer.URL
+cabbrev -javascript TITLE buffer.title
+cabbrev -javascript ggl ggl(buffer.URI)
+cabbrev PLUG ~/vimperator/plugin/
+
+" for twittperator
+
+
+
+
+"+-----------------------------------------------------------------------------+
+" Colors
+"+-----------------------------------------------------------------------------+
+
+colorscheme orecolor
+"colorscheme sweets_snaka 
+
+"+-----------------------------------------------------------------------------+
+" PlugIns
+"+-----------------------------------------------------------------------------+
+
+" _my_cybouz
+nnoremap <Leader>c :cybouz<Space>
+
+" asdfghjkl.js
+let g:asdfghjkl_default = "true"
+let g:asdfghjkl_mode_change_key = "<Space>"
+
+" auto_source.js
+let g:auto_source_first_time = 1
+
+" copy.js
+map .c :copy<Space>
+
+" ime_controller.js 
+let g:ex_ime_mode = "inactive" 
+let g:textarea_ime_mode = "inactive" 
+
+
+" feedSomeKeys_3
+
+" GMail
+"set preload
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+
+lazy fmaps -u='mail\.google\.com/mail' -events=vkeydown,keypress,vkeyup j k
+lazy fmaps -u='mail\.google\.com/mail' c n p o u x s r a z ? gi gs gt gd ga gc gk I
+lazy fmaps -u='mail\.google\.com/mail' -p=<Leader> d,# s,! e
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c j,n k,p n,j p,k o u x s r a z ? gi gs gt gd ga gc gk
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' -p=<Leader> d,# s,! e
+
+" GReader
+lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v z A r S N P X O gh ga gs gt gu u / ? J K
+
+" LDR
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j J,> k K,< s r a p o v c i,p <Space> <S-Space> z < >
+
+" LDRize
+lazy fmaps <C-j>,j <C-k>,k o p v
+
+" sbmcommentsviewer.js 
+let g:def_sbm_format = "timestamp,id,tagsAndComment"
+let g:sbm_comments_viewer_filter_nocomments = 1
+
+" tombloo.js
+noremap .t :tombloo!<Space>
+
+" multi_requester.js
+map m :mr<Space>
+map M :mr!<Space>
+let g:multi_requester_default_sites = "alc"
+
+" twittperator.js
+nnoremap <Leader>t :tw 
+nnoremap <Leader>T :tw! 
+nnoremap <Leader>, :tw! 
+nnoremap <Leader>@ :tw!@
+nnoremap <Leader>/ :tw!/
+
+" use chirp stream
+let g:twittperator_use_chirp = 1
+let g:twittperator_plugin_echo_tweet = 1
+let g:twittperator_plugin_reply_popup_alert = 1
+let g:twittperator_screen_name = "ninja_tottori"
+let g:twlist_max_rows = 150
+let g:twittperator_plugin_twlist_win = 1
+let g:twittperator_history_limit = 2000
+let g:twittperator_track_words = "vimp,vimperator,twittperator,jiu-jitsu,柔術,#bjj"
+
+
+" appendAnchor.js
+let g:auto_append_anchor_once = 1
+map <Leader>a :anc<CR>
+
+
+" statstats.js
+let g:statstat_expression = "let ([,,,as]=commands.parseCommand(commandline.command)) as.length"
+let g:statstat_autorun = "true"
+let g:statstat_interval = "500"
+
+
+" hint-tombloo.js
+" usage=> ;r 
+let g:hint_tombloo_key   = 'r'
+let g:hint_tombloo_xpath = '//img'
+
+" google-translator.js
+map <Leader>g :gtrans
+
+" panorama.js
+nnoremap <Leader>q :panorama<Space>
+
+" statustoolbars.js
+" アイコンをaddon-barからステータスバーに移動
+lazy set statustoolbars=feed-button,noscript-tbb,
+
+" statusbar_panel.js
+nnoremap <Leader>m :statusbarpanel<Space>-b=r<Space>
+
+
+"+-----------------------------------------------------------------------------+
+" その他
+"+-----------------------------------------------------------------------------+
+" js系コマンドを外に移動
+" http://d.hatena.ne.jp/nokturnalmortum/20080808#1218183528
+so ~/vimperator/sub-vimperator.js
+
+" TraceMonkey を有効 
+" http://d.hatena.ne.jp/masa138/20100608/1276004746
+set! javascript.options.jit.chrome=true 
+
+" XUL/Migemo のクイック Migemo 検索へのショートカットを無効に 
+set! xulmigemo.shortcut.manualStart= 
+
+
+
+" Greasemonkey 0.9.1でwindowを共通にする。（必要性は一時的？"
+js <<EOM
+autocommands.add('VimperatorEnter', '.*',
+  function() {
+    let gm = Components.classes['@greasemonkey.mozdev.org/greasemonkey-service;1'];
+    if (gm) {
+      gm = gm.getService().wrappedJSObject;
+      if (gm.injectScripts.toSource().search('sharedWindow') == -1) {
+          gm.injectScripts = liberator.eval(
+              gm.injectScripts.toSource()
+                  .replace(/(?=var firebugConsole)/,
+                          'var sharedWindow = {};' +
+                          'sharedWindow.window = sharedWindow;' +
+                          'sharedWindow.__proto__ = new XPCNativeWrapper(unsafeContentWin);')
+                  .replace(/(?=sandbox\.__proto__)/, ' sandbox.window = sharedWindow;'),
+              gm.injectScripts);
+      }
+    }
+  });
+EOM
+
+
+
+
+
+
+echo "done"
