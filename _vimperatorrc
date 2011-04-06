@@ -265,7 +265,7 @@ let g:twittperator_screen_name = "ninja_tottori"
 let g:twlist_max_rows = 150
 let g:twittperator_plugin_twlist_win = 1
 let g:twittperator_history_limit = 2000
-let g:twittperator_track_words = "vimp,vimperator,twittperator,jiu-jitsu,柔術,#bjj"
+let g:twittperator_track_words = "vimp,vimperator,twittperator,javascript,jiu-jitsu,柔術,#bjj"
 
 
 " appendAnchor.js
