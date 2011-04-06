@@ -1,4 +1,4 @@
-// keymap‚¶‚á‚È‚¢‚Ì‚ªƒ~ƒ\
+// keymapã˜ã‚ƒãªã„ã®ãŒãƒŸã‚½
 [
     ['w',':tabclose'],
     ['<C-1>',':set gui=nobookmarks,nomenu,nonavigation'],
@@ -31,7 +31,7 @@ mappings.addUserMap([modes.NORMAL,modes.VISUAL],['<C-c>'], 'Copy selected text o
 
 
 
-// s‚ÅŒŸõ
+// sã§æ¤œç´¢
 mappings.addUserMap([modes.NORMAL,modes.VISUAL],['s'], 'Search Selected Text',
   function(){
     var sel = window.content.window.getSelection().toString();
