@@ -61,6 +61,27 @@ mappings.addUserMap(
 );
 
 
+// Add Mapping `A-c' Start|Stop ChirpUserStream 
+mappings.addUserMap([modes.NORMAL,modes.VISUAL],['<A-c>'], 'Toggle twittperator ChirpUserStream',
+	function(){
+		if(liberator.globalVariables.twittperator_use_chirp==0){
+			liberator.plugins.twittperator.ChirpUserStream.start();
+			liberator.globalVariables.twittperator_use_chirp = 1;
+			liberator.echo("Start ChirpUserStream");
+			
+		}else{
+			liberator.plugins.twittperator.ChirpUserStream.stop();
+			liberator.globalVariables.twittperator_use_chirp = 0;
+			liberator.echo("Stop ChirpUserStream");
+		}
+	},{}
+);
+
+
+
+
+
+
 // http://vimperator.g.hatena.ne.jp/teramako/20110111/1294733346
 // http://code.google.com/intl/ja/apis/urlshortener/v1/getting_started.html
 userContext.ggl = function getGoogleShortenURL(url, callback) {
